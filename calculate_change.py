@@ -1,5 +1,5 @@
 def calculate_change(payment, cost):
-
+    
     change  = payment-cost
     a=50000
     b=10000
