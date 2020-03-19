@@ -1,15 +1,13 @@
-# 점수
-midterm = 40
-final = 45
-total = midterm + final
+def is_evenly_divisible(number):
+    if number % 2 == 0:
+        return True
+    else:
 
-if total>=90 :
-    print("You get a A.")
-elif total>=80 :
-    print("You get a B.")
-elif total>=70 :
-    print("You get a C.")
-elif total>=60 :
-    print("You get a D.")
-else :
-    print("You get a F.")
+        return False
+
+    # 코드를 작성하세요
+
+
+print(is_evenly_divisible(3))
+print(is_evenly_divisible(7))
+print(is_evenly_divisible(8))
