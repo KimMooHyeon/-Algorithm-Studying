@@ -15,3 +15,5 @@ for test_case in range(1, T + 1):
     print(ai_cnt)
 
     print("#{} {} {}".format(test_case,ai[ai_cnt.index(max(ai_cnt))],max(ai_cnt)))
+
+
