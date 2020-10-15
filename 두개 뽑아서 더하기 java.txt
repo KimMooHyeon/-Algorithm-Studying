@@ -1,0 +1,26 @@
+import java.util.ArrayList;
+import java.util.Collections;
+class Solution {
+    
+    public int[] solution(int[] numbers) {
+        int[] answer = {};
+        // arrat list 선언
+        ArrayList<Integer> arr = new ArrayList<>();
+        // 배열 두개 값 더해서 리스트에 추가
+        for(int i = 0; i < numbers.length - 1; i++) {
+            for(int j = i + 1; j < numbers.length; j++) {
+                if(!arr.contains(numbers[i] + numbers[j])) {
+                    arr.add(numbers[i] + numbers[j]);
+                }
+            }
+        }
+        // 정렬
+        Collections.sort(arr);
+        answer = new int[arr.size()];
+        //배열에 있는지 확인
+        for(int i = 0; i < arr.size(); i++) {
+            answer[i] = arr.get(i);
+        }
+        return answer;
+    }
+}
