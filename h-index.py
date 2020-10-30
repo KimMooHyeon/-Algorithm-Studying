@@ -10,3 +10,4 @@ def solution(citations):
     if(answer == 0 and citations[0] >= h):
         answer = h
     return answer
+
