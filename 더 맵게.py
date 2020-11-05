@@ -1,33 +1,61 @@
-def check_min_cnt(target_name):
-    now = ord('A')
-    target = ord(target_name)
-    return (min(abs(now - ord('A') + (ord('Z') - target) + 1), abs(now - target)))
+import heapq
 
 
-def solution(name):
+def solution(scoville, k):
+    heapq.heapify(scoville)
+    i = 0
+    while scoville[0] < k:
+        if len(scoville) > 1:
+            heapq.heappush(scoville, heapq.heappop(scoville) + (heapq.heappop(scoville) * 2))
+            i += 1
+        else:
+            return -1
+    return i
+
+
+# 섞은 음식의 스코빌 지수 = 가장 맵지 않은 음식의 스코빌 지수 + (두 번째로 맵지 않은 음식의 스코빌 지수 * 2)
+"""  
+def solution(scoville, K):
     answer = 0
-    right_ans = 0
-    left_ans = 0
-    check_num = [False] * len(name)
-    check_num2 = [False] * len(name)
-    for i, v in enumerate(name):
-        if v == 'A':
-            check_num[i] = True
-            check_num2[i] = True
+    scoville.sort()
+    check=0
+    while check == 0 :
+        if len(scoville)==1:
+            if scoville[0]>=K:     
+                return answer
+                break
+            else:
+                answer = -1
+                return answer
 
-    for i, v in enumerate(name):
-        right_ans += check_min_cnt(v) + 1
-        if False not in check_num:
+        if scoville[0] < K :
+           # print(scoville[0])
+            two_sum=scoville[0] + scoville[1]*2
+            del scoville[0] 
+            del scoville[0]
+            if len(scoville)==0 :
+                scoville.append(two_sum)
+                answer+=1
+                if len(scoville)==1:
+                    if scoville[0]>=K:    
+                        return answer
+                    else:
+                        answer = -1
+                        return answer
+            for i,v in enumerate(scoville) :
+                if i == len(scoville)-1:
+                    scoville.append(two_sum)
+                 #   print("?")
+                    answer+=1
+                    break
+
+                if two_sum <= v:
+                    scoville.insert(i,two_sum)
+                  #  print(scoville)
+                    answer+=1
+                    break
+        else  :
             break
 
-    check_num = [False] * len(name)
-    for i in range(0, -len(name), -1):
-        left_ans += check_min_cnt(name[i]) + 1
-        check_num2[i] = True
-        print(name[i])
-        if False not in check_num2:
-            break
-    print(left_ans)
-    print(right_ans)
-    answer = min(left_ans - 1, right_ans - 1)
     return answer
+"""
