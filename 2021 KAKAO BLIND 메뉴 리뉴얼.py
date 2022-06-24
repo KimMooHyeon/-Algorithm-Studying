@@ -1,5 +1,3 @@
-import itertools
-
 def solution(orders, course):
     answer=[]
     menu_dic={}
