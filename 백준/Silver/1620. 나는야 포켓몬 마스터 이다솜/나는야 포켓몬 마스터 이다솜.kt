@@ -17,11 +17,9 @@ fun main() {
     }
     for (j in 1..M) {
         val input = br.readLine()
-        try {
-            if (input.toInt() in 1..100004) {
-                bw.write("${nStringName[input.toInt() - 1]}\n")
-            }
-        }catch (e : Exception) {
+        if (input.substring(0, 1) >= "0" && input.substring(0, 1) <= "9") {
+            bw.write("${nStringName[input.toInt() - 1]}\n")
+        } else {
             bw.write("${nList[input]}\n")
         }
     }
