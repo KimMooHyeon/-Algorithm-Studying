@@ -26,12 +26,10 @@ fun main() {
             }
         }
     }
-    /* map.forEachIndexed { i, v ->
-         println("$i 번 = $v")
-     }*/
 
     dfs(1, 0)
     dfs(deepNode, 0)
+    
     println(num)
     br.close()
     bw.close()
