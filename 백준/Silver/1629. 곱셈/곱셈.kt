@@ -8,20 +8,33 @@ fun main() {
 
     val br = BufferedReader(InputStreamReader(System.`in`))
     val bw = BufferedWriter(OutputStreamWriter(System.out))
-    val (A,B,C) = br.readLine().split(" ").map { it.toLong() }
-    
-    var ans = pow(A,B,C)
+    val (A, B, C) = br.readLine().split(" ").map { it.toLong() }
+
+    val ans = pow(A, B, C)
+
     bw.write(ans.toString())
     bw.close()
 }
-fun pow(base:Long,expo:Long,mod:Long): Long {
-    if(expo==1L)
-        return base%mod
-
-    val temp = pow(base,expo/2,mod)
-
-    if(expo%2==0L){
-        return (temp*temp)%mod
+// pow 2 3
+// pow
+fun pow(a: Long, b: Long, c: Long): Long {
+    when {
+        b == 0L -> {
+            return 1 
+        }
+        b == 1L -> {
+            return a % c
+        }
+        b % 2L == 0L -> {
+            val num = pow(a, b / 2, c) % c
+            return (num * num) % c
+        }
+        b % 2L == 1L -> {
+            val num = pow(a, b / 2, c) % c
+            return (((num * num) % c) * a) % c
+        }
+        else -> {
+            return -1
+        }
     }
-    return ((temp*temp)%mod*base)%mod
 }
