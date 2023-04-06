@@ -5,7 +5,6 @@ import java.io.OutputStreamWriter
 
 data class CostCity(val cost: Int, val customer: Int)
 
-// 얼리 아답터가 아닌 사람들은 자신의 모든 친구들이 얼리 아답터일 때만 이 아이디어를 받아들인다.
 fun main() {
     val br = BufferedReader(InputStreamReader(System.`in`))
     val bw = BufferedWriter(OutputStreamWriter(System.out))
@@ -24,14 +23,10 @@ fun main() {
     dp[0]=0
 
     costList.forEach {
-       // println(it)
         for (i in it.customer until  c+100){
-            if (it.cost == Int.MAX_VALUE || dp[i-it.customer] == Int.MAX_VALUE){
-
-            }else{
+            if (!(it.cost == Int.MAX_VALUE || dp[i-it.customer] == Int.MAX_VALUE)){
                 dp[i] = minOf(dp[i-it.customer]+it.cost,dp[i])
             }
-
         }
     }
 
