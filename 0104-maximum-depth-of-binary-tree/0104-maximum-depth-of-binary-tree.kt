@@ -8,7 +8,28 @@
  *     var right: TreeNode? = null
  * }
  */
+import java.util.*
 class Solution {
+    fun bfs(root: TreeNode?): Int {
+        var maxNum = 0
+        if (root == null) {
+            return 0
+        }
+        var queue = LinkedList<Pair<TreeNode?,Int>>()
+        queue.add(Pair(root, 1))
+        while (queue.isNotEmpty()) {
+            val temp = queue.poll()
+            maxNum = maxOf(maxNum, temp.second)
+            if (temp.first!!.left != null) {
+                queue.add(Pair(temp.first!!.left, temp.second + 1))
+            }
+            if (temp.first!!.right != null) {
+                queue.add(Pair(temp.first!!.right, temp.second + 1))
+            }
+        }
+        return maxNum
+    }
+    
     fun dfs(root:TreeNode?) : Int{
         if (root == null){
             return 0
@@ -18,6 +39,7 @@ class Solution {
         return maxOf(left,right)+1
     }
     fun maxDepth(root: TreeNode?): Int {
-        return dfs(root)
+        println(bfs(root))
+        return bfs(root)
     }
 }
