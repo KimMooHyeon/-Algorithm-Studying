@@ -1,18 +1,18 @@
-
+import java.util.*
 class Solution {
     fun solution(sizes: Array<IntArray>): Int {
         var answer: Int = 0
-        var bigList = mutableListOf<Int>()
-        var smallList = mutableListOf<Int>()
+        var first = PriorityQueue<Int>()
+        var second = PriorityQueue<Int>()
         sizes.forEach{
-            if(it[1]>=it[0]){
-                bigList.add(it[1])
-                smallList.add(it[0])
+            if(it[0]>it[1]){
+                first.add(-it[0])
+                second.add(-it[1])
             }else{
-                bigList.add(it[0])
-                smallList.add(it[1])
+                first.add(-it[1])
+                second.add(-it[0])
             }
         }
-        return bigList.maxOrNull()!!*smallList.maxOrNull()!!
+        return first.poll() * second.poll()
     }
 }
