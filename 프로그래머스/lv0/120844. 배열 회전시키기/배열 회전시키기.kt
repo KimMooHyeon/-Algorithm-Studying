@@ -1,16 +1,17 @@
-import java.util.*
 class Solution {
     fun solution(numbers: IntArray, direction: String): IntArray {
         var answer: IntArray = intArrayOf()
-        val ll = LinkedList<Int>()
+        val tempList= mutableListOf<Int>()
         numbers.forEach{
-            ll.add(it)
+            tempList.add(it)
         }
-        if(direction=="left"){
-            ll.add(ll.poll())
+        if(direction == "right"){
+            tempList.add(0,tempList[tempList.lastIndex])
+            tempList.removeAt(tempList.lastIndex)
         }else{
-            ll.addFirst(ll.removeLast())
+            tempList.add(tempList[0])
+            tempList.removeAt(0)
         }
-        return ll.toIntArray()
+        return tempList.toIntArray()
     }
 }
