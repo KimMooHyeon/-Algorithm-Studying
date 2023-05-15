@@ -39,12 +39,7 @@ fun main() {
 
         for (i in 1 until r) {
             for (j in 1 until r) {
-                var plusNum = 0
-                for (offset in 0..2) {
-                    val checkX = j + xOffSet[offset]
-                    val checkY = i + yOffSet[offset]
-                    plusNum = maxOf(plusNum,copyMap[checkY][checkX]-map[checkY][checkX])
-                }
+                val plusNum = copyMap[0][j]-map[0][j]
                 copyMap[i][j]+=plusNum
             }
         }
